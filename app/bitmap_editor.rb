@@ -27,7 +27,7 @@ class BitmapEditor
       y = arguments[1].to_i
       colour = arguments[2]
       @image.set_pixel(x, y, colour)
-      puts @image.errors.join("\n") if @image.errors.any?
+      output_errors
 
     when 'V'
       x = arguments[0].to_i
@@ -35,10 +35,15 @@ class BitmapEditor
       y2 = arguments[2].to_i
       colour = arguments[3]
       @image.set_vertical_segment(x, y1, y2, colour)
-      puts @image.errors.join("\n") if @image.errors.any?
+      output_errors
 
     when 'H'
-      puts 'NOT IMPLEMENTED'
+      x1 = arguments[0].to_i
+      x2 = arguments[1].to_i
+      y = arguments[2].to_i
+      colour = arguments[3]
+      @image.set_vertical_segment(x1, x2, y, colour)
+      output_errors
 
     when 'I'
       width = arguments.first.to_i
@@ -54,6 +59,10 @@ class BitmapEditor
     else
       puts 'unrecognised command :('
     end
+  end
+
+  def output_errors
+    puts @image.errors.join("\n") if @image.errors.any?
   end
 
   def exit_console

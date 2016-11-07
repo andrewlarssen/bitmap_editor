@@ -14,6 +14,30 @@ RSpec.describe Bitmap do
     it 'creates an image with the correct dimensions and all white pixels' do
       expect(image).to have_the_default_contents
     end
+
+    it 'creates an image with an error if the width is too low' do
+      image = Bitmap.new(0, 5)
+      expect(image.errors).to eq ['width too low']
+      expect(image.width).to eq 1
+    end
+
+    it 'creates an image with an error if the width is too high' do
+      image = Bitmap.new(251, 5)
+      expect(image.errors).to eq ['width too high']
+      expect(image.width).to eq 1
+    end
+
+    it 'creates an image with an error if the height is too low' do
+      image = Bitmap.new(4, 0)
+      expect(image.errors).to eq ['height too low']
+      expect(image.height).to eq 1
+    end
+
+    it 'creates an image with an error if the height is too high' do
+      image = Bitmap.new(4, 251)
+      expect(image.errors).to eq ['height too high']
+      expect(image.height).to eq 1
+    end
   end
 
   describe '#width' do
@@ -115,6 +139,61 @@ RSpec.describe Bitmap do
 
     it 'sets an error if the colour is invalid' do
       image.set_vertical_segment(2, 2, 5, 'n')
+      expect(image.errors).to eq ['Unknown colour']
+      expect(image).to have_the_default_contents
+    end
+  end
+
+  describe '#set_horizontal_segment' do
+    it 'sets a horizontal segment to the correct colour' do
+      image.set_horizontal_segment(2, 4, 5, 'A')
+      expect(image.contents).to eq "OOOO\nOOOO\nOOOO\nOOOO\nOAAA"
+    end
+
+    it 'sets an error if the x1 position is too high' do
+      image.set_horizontal_segment(5, 4, 5, 'A')
+      expect(image.errors).to include('X1 position too high')
+      expect(image).to have_the_default_contents
+    end
+
+    it 'sets an error if the x1 position is too low' do
+      image.set_horizontal_segment(0, 4, 5, 'A')
+      expect(image.errors).to eq ['X1 position too low']
+      expect(image).to have_the_default_contents
+    end
+
+    it 'sets an error if the x2 position is too high' do
+      image.set_horizontal_segment(2, 5, 5, 'A')
+      expect(image.errors).to eq ['X2 position too high']
+      expect(image).to have_the_default_contents
+    end
+
+    it 'sets an error if the x2 position is too low' do
+      image.set_horizontal_segment(2, 0, 5, 'A')
+      expect(image.errors).to include('X2 position too low')
+      expect(image).to have_the_default_contents
+    end
+
+    it 'sets an error if the y position is too high' do
+      image.set_horizontal_segment(2, 4, 6, 'A')
+      expect(image.errors).to eq ['Y position too high']
+      expect(image).to have_the_default_contents
+    end
+
+    it 'sets an error if the y position is too low' do
+      image.set_horizontal_segment(2, 4, 0, 'A')
+      expect(image.errors).to eq ['Y position too low']
+      expect(image).to have_the_default_contents
+    end
+
+    it 'sets an error if x2 > x1' do
+      image.set_horizontal_segment(4, 3, 3, 'A')
+      expect(image.errors).to eq ['X2 must be higher than X1']
+      expect(image).to have_the_default_contents
+    end
+
+    it 'sets an error if the colour is invalid' do
+      image.set_horizontal_segment(2, 4, 5, 'n')
       expect(image.errors).to eq ['Unknown colour']
       expect(image).to have_the_default_contents
     end

@@ -5,6 +5,10 @@ class Bitmap
 
   def initialize(width, height)
     @errors = []
+    check_width(width)
+    check_height(height)
+    height = 1 unless height >= 1 && height <= 250
+    width = 1 unless width >= 1 && width <= 250
     @structure = Array.new(height) { Array.new(width, WHITE) }
   end
 
@@ -29,6 +33,18 @@ class Bitmap
     end
   end
 
+  def set_horizontal_segment(x1, x2, y, colour)
+    check_x_position(x1, 'X1')
+    check_x_position(x2, 'X2')
+    check_y_position(y)
+    check_colour(colour)
+    @errors << 'X2 must be higher than X1' unless x2 > x1
+    return if errors.any?
+    x1.upto(x2) do |x|
+      @structure[y - 1][x - 1] = colour
+    end
+  end
+
   def width
     @structure.first.size
   end
@@ -43,6 +59,16 @@ class Bitmap
   end
 
   private
+
+  def check_height(height)
+    @errors << 'height too low' if height < 1
+    @errors << 'height too high' if height > 250
+  end
+
+  def check_width(width)
+    @errors << 'width too low' if width < 1
+    @errors << 'width too high' if width > 250
+  end
 
   def check_x_position(x, name = 'X')
     @errors << "#{name} position too low" unless x >= 1
