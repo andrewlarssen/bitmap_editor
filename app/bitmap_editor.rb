@@ -9,8 +9,28 @@ class BitmapEditor
       case input
         when '?'
           show_help
+
+        when 'C'
+          puts 'NOT IMPLEMENTED'
+
+        when 'L'
+          puts 'NOT IMPLEMENTED'
+
+        when 'V'
+          puts 'NOT IMPLEMENTED'
+
+        when 'H'
+          puts 'NOT IMPLEMENTED'
+
+        when 'I'
+          puts 'NOT IMPLEMENTED'
+
+        when 'S'
+          puts 'NOT IMPLEMENTED'
+
         when 'X'
           exit_console
+
         else
           puts 'unrecognised command :('
       end
