@@ -6,7 +6,8 @@ class BitmapEditor
     while @running
       print '> '
       input = gets.chomp
-      case input
+      command, *arguments = input.split(' ')
+      case command
         when '?'
           show_help
 
@@ -23,10 +24,12 @@ class BitmapEditor
           puts 'NOT IMPLEMENTED'
 
         when 'I'
-          puts 'NOT IMPLEMENTED'
+          width = arguments.first.to_i
+          height = arguments.last.to_i
+          @image = Bitmap.new(width, height)
 
         when 'S'
-          puts 'NOT IMPLEMENTED'
+          puts @image.contents
 
         when 'X'
           exit_console

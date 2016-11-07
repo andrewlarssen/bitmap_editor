@@ -10,4 +10,16 @@ RSpec.describe Bitmap do
       expect(image.contents).to eq "OOOO\nOOOO\nOOOO\nOOOO\nOOOO"
     end
   end
+
+  describe '#width' do
+    it 'returns the image width' do
+      expect(image.width).to eq 4
+    end
+  end
+
+  describe '#height' do
+    it 'returns the image height' do
+      expect(image.height).to eq 5
+    end
+  end
 end
