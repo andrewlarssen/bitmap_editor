@@ -45,13 +45,13 @@ class Bitmap
   private
 
   def check_x_position(x, name = 'X')
-    @errors << "#{name} position to low" unless x >= 1
-    @errors << "#{name} position to high" unless x <= width
+    @errors << "#{name} position too low" unless x >= 1
+    @errors << "#{name} position too high" unless x <= width
   end
 
   def check_y_position(y, name = 'Y')
-    @errors << "#{name} position to low" unless y >= 1
-    @errors << "#{name} position to high" unless y <= height
+    @errors << "#{name} position too low" unless y >= 1
+    @errors << "#{name} position too high" unless y <= height
   end
 
   def check_colour(colour)

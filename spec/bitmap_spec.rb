@@ -34,27 +34,27 @@ RSpec.describe Bitmap do
       expect(image.contents).to eq "OOAO\nOOOO\nOOOO\nOOOO\nOOOO"
     end
 
-    it 'sets an error if the x position is to high' do
+    it 'sets an error if the x position is too high' do
       image.set_pixel(5, 3, 'A')
-      expect(image.errors).to eq ['X position to high']
+      expect(image.errors).to eq ['X position too high']
       expect(image).to have_the_default_contents
     end
 
-    it 'sets an error if the x position is to low' do
+    it 'sets an error if the x position is too low' do
       image.set_pixel(0, 3, 'A')
-      expect(image.errors).to eq ['X position to low']
+      expect(image.errors).to eq ['X position too low']
       expect(image).to have_the_default_contents
     end
 
-    it 'sets an error if the y position is to high' do
+    it 'sets an error if the y position is too high' do
       image.set_pixel(1, 6, 'A')
-      expect(image.errors).to eq ['Y position to high']
+      expect(image.errors).to eq ['Y position too high']
       expect(image).to have_the_default_contents
     end
 
-    it 'sets an error if the y position is to low' do
+    it 'sets an error if the y position is too low' do
       image.set_pixel(1, 0, 'A')
-      expect(image.errors).to eq ['Y position to low']
+      expect(image.errors).to eq ['Y position too low']
       expect(image).to have_the_default_contents
     end
 
@@ -71,39 +71,39 @@ RSpec.describe Bitmap do
       expect(image.contents).to eq "OOOO\nOAOO\nOAOO\nOAOO\nOAOO"
     end
 
-    it 'sets an error if the x position is to high' do
+    it 'sets an error if the x position is too high' do
       image.set_vertical_segment(5, 2, 5, 'A')
-      expect(image.errors).to eq ['X position to high']
+      expect(image.errors).to eq ['X position too high']
       expect(image).to have_the_default_contents
     end
 
-    it 'sets an error if the x position is to low' do
+    it 'sets an error if the x position is too low' do
       image.set_vertical_segment(0, 2, 5, 'A')
-      expect(image.errors).to eq ['X position to low']
+      expect(image.errors).to eq ['X position too low']
       expect(image).to have_the_default_contents
     end
 
-    it 'sets an error if the y1 position is to high' do
+    it 'sets an error if the y1 position is too high' do
       image.set_vertical_segment(2, 6, 5, 'A')
-      expect(image.errors).to include('Y1 position to high')
+      expect(image.errors).to include('Y1 position too high')
       expect(image).to have_the_default_contents
     end
 
-    it 'sets an error if the y1 position is to low' do
+    it 'sets an error if the y1 position is too low' do
       image.set_vertical_segment(2, 0, 5, 'A')
-      expect(image.errors).to eq ['Y1 position to low']
+      expect(image.errors).to eq ['Y1 position too low']
       expect(image).to have_the_default_contents
     end
 
-    it 'sets an error if the y2 position is to high' do
+    it 'sets an error if the y2 position is too high' do
       image.set_vertical_segment(2, 2, 6, 'A')
-      expect(image.errors).to eq ['Y2 position to high']
+      expect(image.errors).to eq ['Y2 position too high']
       expect(image).to have_the_default_contents
     end
 
-    it 'sets an error if the y2 position is to low' do
+    it 'sets an error if the y2 position is too low' do
       image.set_vertical_segment(2, 2, 0, 'A')
-      expect(image.errors).to include('Y2 position to low')
+      expect(image.errors).to include('Y2 position too low')
       expect(image).to have_the_default_contents
     end
 
