@@ -19,6 +19,10 @@ The application is mainly structured as follows:
 * BitmapEditor - basic controller class that parses commands
 * Bitmap - basic model class that stores/manipulates state of image
 
-I ahe not added it as a dependancy, but have used rubocop and followed most of its reccomendations.
+Coordinates start at 1,1 being the top left
+
+Maximum width or height is 250 pixels
+
+I have not added it as a dependancy, but have used rubocop and followed most of its reccomendations.
 
 
