@@ -5,6 +5,10 @@ class Bitmap
     @structure = Array.new(height) { Array.new(width, WHITE) }
   end
 
+  def set_pixel(x, y, colour)
+    @structure[y-1][x-1] = colour
+  end
+
   def width
     @structure.first.size
   end

@@ -22,4 +22,11 @@ RSpec.describe Bitmap do
       expect(image.height).to eq 5
     end
   end
+
+  describe '#set_pixel' do
+    it 'sets a single pixel to the correct colour' do
+      image.set_pixel(3, 1, 'A')
+      expect(image.contents).to eq "OOAO\nOOOO\nOOOO\nOOOO\nOOOO"
+    end
+  end
 end

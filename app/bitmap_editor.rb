@@ -12,7 +12,9 @@ class BitmapEditor
           show_help
 
         when 'C'
-          puts 'NOT IMPLEMENTED'
+          width = @image.width
+          height = @image.height
+          @image = Bitmap.new(width, height)
 
         when 'L'
           puts 'NOT IMPLEMENTED'
