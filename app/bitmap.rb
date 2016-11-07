@@ -1,5 +1,6 @@
 class Bitmap
   WHITE = 'O'
+  MAX_SIZE = 250
 
   attr_reader :errors
 
@@ -7,8 +8,8 @@ class Bitmap
     @errors = []
     check_width(width)
     check_height(height)
-    height = 1 unless height >= 1 && height <= 250
-    width = 1 unless width >= 1 && width <= 250
+    height = 1 unless height >= 1 && height <= MAX_SIZE
+    width = 1 unless width >= 1 && width <= MAX_SIZE
     @structure = Array.new(height) { Array.new(width, WHITE) }
   end
 
@@ -62,12 +63,12 @@ class Bitmap
 
   def check_height(height)
     @errors << 'height too low' if height < 1
-    @errors << 'height too high' if height > 250
+    @errors << 'height too high' if height > MAX_SIZE
   end
 
   def check_width(width)
     @errors << 'width too low' if width < 1
-    @errors << 'width too high' if width > 250
+    @errors << 'width too high' if width > MAX_SIZE
   end
 
   def check_x_position(x, name = 'X')
