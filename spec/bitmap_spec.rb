@@ -8,7 +8,7 @@ RSpec::Matchers.define :have_the_default_contents do
 end
 
 RSpec.describe Bitmap do
-  let(:image) { Bitmap.new(4, 5) }
+  let(:image) { described_class.new(4, 5) }
 
   describe '.new' do
     it 'creates an image with the correct dimensions and all white pixels' do
