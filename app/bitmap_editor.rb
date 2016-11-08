@@ -1,3 +1,4 @@
+# Main program controller
 class BitmapEditor
   def run
     @running = true

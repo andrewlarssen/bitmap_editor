@@ -1,3 +1,4 @@
+# Bitmap model
 class Bitmap
   WHITE = 'O'
   MAX_SIZE = 250
