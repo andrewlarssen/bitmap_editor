@@ -38,11 +38,18 @@ class BitmapEditor
       exit_console
 
     else
-      puts 'unrecognised command :('
+      output 'unrecognised command :('
     end
+  rescue NoMethodError
+    output 'must init an image first' unless @image
   end
 
   private
+
+  def output(message)
+    return unless @running
+    puts message
+  end
 
   def clear
     width = @image.width
@@ -83,20 +90,20 @@ class BitmapEditor
   end
 
   def show
-    puts @image.contents
+    output @image.contents
   end
 
   def output_errors
-    puts @image.errors.join("\n") if @image.errors.any?
+    output @image.errors.join("\n") if @image.errors.any?
   end
 
   def exit_console
-    puts 'goodbye!'
+    output 'goodbye!'
     @running = false
   end
 
   def show_help
-    puts "? - Help
+    output "? - Help
 I M N - Create a new M x N image with all pixels coloured white (O).
 C - Clears the table, setting all pixels to white (O).
 L X Y C - Colours the pixel (X,Y) with colour C.
