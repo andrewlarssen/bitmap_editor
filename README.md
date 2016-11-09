@@ -25,4 +25,10 @@ Maximum width or height is 250 pixels
 
 I have not added it as a dependancy, but have used rubocop and followed most of its reccomendations.
 
+There are a few places where I could potentially remove some duplication (for
+example the validation methods in bitmap) but having tried this I felt it
+decreased the readability for a relitivly small gain in reducing duplication.
 
+I have kept the basic structure from the example application. If the application
+was to be much more complex I would probably redesign this and separate the main
+run loop into a separate class. This would make it easier to test.
